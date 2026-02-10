@@ -1,0 +1,28 @@
+
+version: '3.8'
+services:
+  # Mock Database for local dev if Neon not connected
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: epstein_local
+    ports:
+      - "5432:5432"
+
+  ai-worker:
+    build: 
+      context: ./ai-worker
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/epstein_local
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - postgres
+
+  # Optional: Redis
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"

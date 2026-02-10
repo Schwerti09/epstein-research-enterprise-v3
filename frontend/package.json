@@ -1,0 +1,20 @@
+{
+  "name": "epstein-frontend",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@neondatabase/serverless": "^0.6.0",
+    "pg": "^8.11.3",
+    "lucide-react": "latest",
+    "tailwindcss": "^3.4.0"
+  }
+}
